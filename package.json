@@ -1,0 +1,28 @@
+{
+  "name": "strider-backend",
+  "version": "1.0.0",
+  "description": "strider backend for posts app",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .  --ext .js",
+    "lint-fix": "eslint --fix .  --ext .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manfioLP/strider-backend.git"
+  },
+  "author": "manfioLP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manfioLP/strider-backend/issues"
+  },
+  "homepage": "https://github.com/manfioLP/strider-backend#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  },
+  "dependencies": {
+    "mongoose": "^7.0.5"
+  }
+}
