@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 
 let isConnected;
 
-require('dotenv').config({ path: path.resolve('.env') });
+require('dotenv').config({ path: path.resolve(`.env${process.env.NODE_ENV === 'test' ? '.test' : ''}`) });
 
-const connectionString = `mongodb+srv://${process.env.ATLAS_USERNAME}:${process.env.ATLAS_PWD}@cluster0.dnqzeis.mongodb.net/?retryWrites=true&w=majority`;
+const atlas = process.env.ATLAS;
+const connectionString = `mongodb${atlas ? '+srv' : ''}://${process.env.MONGO_USERNAME}:${process.env.MONGO_PWD}@${process.env.DB_HOST}/?retryWrites=true&w=majority`;
 
 const connectToDatabase = () => {
   if (isConnected) {
@@ -17,6 +18,9 @@ const connectToDatabase = () => {
   return mongoose.connect(connectionString)
     .then((db) => {
       isConnected = db.connections[0].readyState;
+    }).catch((e) => {
+      isConnected = false;
+      throw e;
     });
 };
 

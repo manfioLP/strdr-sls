@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .  --ext .js",
-    "lint-fix": "eslint --fix .  --ext .js"
+    "lint-fix": "eslint --fix .  --ext .js",
+    "test": "jest --testPathPattern=/__tests__",
+    "test-watch": "jest --watch --testPathPattern=/__tests__",
+    "test-local": "docker-compose -f db/docker-compose.yml up -d && npm run test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,6 @@
   },
   "dependencies": {
     "dotenv": "^16.0.3",
-    "mongoose": "^7.0.5",
+    "mongoose": "^7.0.5"
   }
 }
