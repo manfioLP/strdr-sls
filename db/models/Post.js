@@ -12,7 +12,10 @@ const PostSchema = new mongoose.Schema({
     enum: ['ROOT', 'REPOST', 'QUOTE'],
     default: 'ROOT',
   },
-  owner: {},
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
   quoteText: {},
   root: {
     type: mongoose.Schema.Types.ObjectId,
