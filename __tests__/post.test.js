@@ -3,7 +3,7 @@ jest.setTimeout(12000); // sometimes depending on network Atlas connection can t
 const { closeConnection, dropCollection } = require('../db');
 const seedUsers = require('../data-import/seed-users');
 
-const createOriginalPostL = require('../handlers/posts/original');
+const { create: createOriginalPostL } = require('../handlers/posts/original');
 
 const context = {
   awsRequestId: 'ckb8j7s4q0002qjr9azyw2xmv',

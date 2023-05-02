@@ -1,7 +1,7 @@
 const { connectToDatabase } = require('../../db');
 const { Post } = require('../../db/models');
 
-module.exports = async (event, context) => {
+module.exports.create = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
   try {
     await connectToDatabase();
