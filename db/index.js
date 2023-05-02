@@ -6,10 +6,8 @@ let isConnected;
 require('dotenv').config({ path: path.resolve(`.env${process.env.NODE_ENV === 'test' ? '.test' : ''}`) });
 
 const atlas = process.env.ATLAS.toLowerCase() === 'true';
-console.log('FUCK', atlas ? '+srv' : '');
 const connectionString = `mongodb${atlas ? '+srv' : ''}://${process.env.MONGO_USERNAME}:${process.env.MONGO_PWD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
-console.log('connectin using', connectionString);
 const connectToDatabase = () => {
   if (isConnected) {
     console.log('... using existing database connection');
