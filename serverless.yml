@@ -1,0 +1,27 @@
+service: robot-delivery
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 128
+  timeout: 15 #default is 6
+  stage: dev # path will be domain.name.com/dev/...
+  region: us-east-1
+
+package:
+  exclude:
+    - coverage/**
+    - .circleci/**
+
+
+functions:
+  createOriginalPost:
+    handler: handlers/posts/original.create
+    events:
+      - http:
+          path: post/original
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline # adding so it can be run offline
