@@ -20,4 +20,19 @@ db.createUser(
 );
 print('Seeder user created!');
 db.createCollection('users');
+
+db = db.getSiblingDB('strider-test');
+db.createUser(
+  {
+    user: process.env.MONGO_USERNAME,
+    pwd: process.env.MONGO_PWD,
+    roles: [
+      { role: 'dbAdmin', db: 'strider-test' },
+      { role: 'readWrite', db: 'strider-test' },
+    ],
+  },
+);
+print('Test user created!');
+
+db.createCollection('users');
 print('################################################################# END');
