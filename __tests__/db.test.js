@@ -10,7 +10,7 @@ const connectHandler = async () => {
   }
 };
 
-jest.setTimeout(12000);
+jest.setTimeout(12000); // sometimes depending on network Atlas connection can take ~10secs
 
 describe('DB', () => {
   test('Connect', async () => {
