@@ -2,6 +2,7 @@ version: '3.7'
 services:
   mongodb_container:
     image: mongo:latest
+    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -9,8 +10,15 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data_container:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+#      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
+#      - ../.env.test:/.env
+#      - ./mongo-init-template.js:/mongo-init-template.js
+#      - ./setup-mongo.sh:/docker-entrypoint-initdb.d/setup-mongo.sh
     command:
       [--auth]
+    env_file:
+      ../.env.test
 
 volumes:
   mongodb_data_container:
