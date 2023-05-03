@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-// const { ObjectId } = mongoose.Schema.Types;
-
 module.exports = [
   {
     _id: new mongoose.Types.ObjectId('644ffee315a89ad5befca503'),
