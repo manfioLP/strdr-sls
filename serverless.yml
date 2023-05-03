@@ -1,4 +1,4 @@
-service: robot-delivery
+service: strider-backend
 
 provider:
   name: aws
@@ -25,3 +25,9 @@ functions:
 
 plugins:
   - serverless-offline # adding so it can be run offline
+  - serverless-dotenv-plugin
+
+custom:
+  dotenv:
+    path: ./config
+    dotenvParser: ./config/dotenv.config.js
