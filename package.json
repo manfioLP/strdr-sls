@@ -4,7 +4,9 @@
   "description": "strider backend for posts app",
   "main": "index.js",
   "scripts": {
-    "seed-users": "node data-import/seed-users.js",
+    "seed-users:dev": "node data-import/seed-users.run.js dev",
+    "seed-users:test": "node data-import/seed-users.run.js test",
+    "seed-users": "node data-import/seed-users.run.js prod",
     "lint": "eslint .  --ext .js",
     "lint-fix": "eslint --fix .  --ext .js",
     "test": "jest --testPathPattern=/__tests__",
