@@ -1,11 +1,8 @@
-const path = require('path');
 const mongoose = require('mongoose');
 
 let isConnected;
 
-require('dotenv').config({ path: path.resolve(`.env${process.env.NODE_ENV === 'test' ? '.test' : ''}`) });
-
-const atlas = process.env.ATLAS.toLowerCase() === 'true';
+const atlas = process.env.ATLAS?.toLowerCase() === 'true';
 const connectionString = `mongodb${atlas ? '+srv' : ''}://${process.env.MONGO_USERNAME}:${process.env.MONGO_PWD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
 const connectToDatabase = () => {
@@ -14,7 +11,6 @@ const connectToDatabase = () => {
     return Promise.resolve();
   }
 
-  console.log('... using new database connection');
   return mongoose.connect(connectionString)
     .then((db) => {
       isConnected = db.connections[0].readyState;
