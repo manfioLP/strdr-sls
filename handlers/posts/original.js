@@ -20,10 +20,18 @@ module.exports.create = async (event, context) => {
     };
   } catch (err) {
     const msg = 'Could not create the post.';
+    let errorBody = null;
+    if (err.errors) {
+      err.statusCode = 400;
+      errorBody = {
+        message: err.message,
+        property: Object.keys(err.errors),
+      };
+    }
     return {
       statusCode: err.statusCode || 500,
       headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ msg, err }),
+      body: JSON.stringify(errorBody || { msg, err }),
     };
   }
 };
