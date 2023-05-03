@@ -1,4 +1,4 @@
-.env
-.env.test
+config/.env
+config/.env.*
 node_modules/
 .idea/
